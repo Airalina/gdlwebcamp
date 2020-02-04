@@ -418,12 +418,12 @@ ul.lista-invitados li{
 @media only screen and (min-width: 480px) {
 ul.lista-invitados li{
   width: 50%;
-
+  }
 }
 @media only screen and (min-width: 768px) {
   ul.lista-invitados li{
     width: 33.3%;
-    
+  }
   }
 div.invitado{
   position: relative;
