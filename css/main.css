@@ -182,6 +182,13 @@ ul {
   background-color: #ffff;
   color: #fe4918;
 }
+.button.transparente{
+  background-color: transparent;
+  border: 2px solid #ffff;
+}
+.button.transparente:hover{
+  border: 2px solid #fe4918;
+}
 .button:hover {
   background-color: #e33000;
 }
@@ -637,14 +644,22 @@ div.newsletter::before{
   background-image: url(../img/bg-newsletter.jpg);
   content: '';
 }
-div.newsletter.contenido{
+div.newsletter .contenido{
   padding: 100px 0;
   color: #ffff;
   text-align: center;
+  position: relative;
 
 }
-div.newsletter .contenido p{
-    
+div.newsletter .contenido p {
+    font-size: 1.2em;
+    text-transform: lowercase;
+}
+div.newsletter .contenido h3 {
+  color: #ffff;
+  text-transform: uppercase;
+  font-size: 7vw;
+  font-family: 'PT Sans', sans-serif;
 }
 /* ==========================================================================
    Helper classes
