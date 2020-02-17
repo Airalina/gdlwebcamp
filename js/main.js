@@ -25,7 +25,9 @@
     var camisas = document.getElementById('camisa_evento');
 
     calcular.addEventListener('click', calcularMontos);
-
+    pase_dia.addEventListener('blur', mostrarDias);
+    pase_dosdias.addEventListener('blur', mostrarDias);
+    pase_completo.addEventListener('blur', mostrarDias);
 
     function calcularMontos(event) {
       event.preventDefault();
@@ -56,24 +58,42 @@
         }
         if (cantCamisa >= 1) {
           listadoProductos.push(cantCamisa + ' Camisas');
-        } if (cantEtiquetas >= 1) {
+        }
+        if (cantEtiquetas >= 1) {
           listadoProductos.push(cantEtiquetas + ' Etiquetas');
         }
         //  console.log(listadoProductos);
-        lista_productos.style.display ="block";
+        lista_productos.style.display = "block";
         lista_productos.innerHTML = '';
-        for(var i = 0; i < listadoProductos.length; i++){
+        for (var i = 0; i < listadoProductos.length; i++) {
           lista_productos.innerHTML += listadoProductos[i] + '<br/>';
         }
         //  console.log(totalPagar);
-        
-        suma.innerHTML = "$ "+ totalPagar.toFixed(2);
-      
-      
-      
+
+        suma.innerHTML = "$ " + totalPagar.toFixed(2);
       }
     }
 
+    function mostrarDias() {
+      var boletosDia = parseInt(pase_dia.value, 10) || 0,
+        boletos2Dias = parseInt(pase_dosdias.value, 10) || 0,
+        boletosCompletos = parseInt(pase_completo.value, 10) || 0;
+
+      var diasElegidos = [];
+      if (boletosDia > 0) {
+        diasElegidos.push('viernes');
+      }
+      if (boletos2Dias > 0) {
+        diasElegidos.push('viernes', 'sabado');
+      }
+      if (boletosCompletos > 0) {
+        diasElegidos.push('viernes', 'sabado', 'domingo');
+      }
+
+      for (var i = 0; i < diasElegidos.length; i++) {
+        document.getElementById(diasElegidos[i]).style.display = "block";
+      }
+    }
 
 
 
