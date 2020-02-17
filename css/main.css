@@ -953,7 +953,15 @@ div.resumen input {
   color: #fe4918;
 
 }
-
+input[disabled].button {
+opacity: .5;
+}
+#error {
+  clear: both;
+  text-align: center;
+  padding: 20px;
+  display: none;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
