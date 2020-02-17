@@ -1,8 +1,8 @@
-(function(){
+(function () {
 
-"use strict";
-var regalo = document.getElementById('regalo');
-document.addEventListener('DOMContentLoaded', function(){
+  "use strict";
+  var regalo = document.getElementById('regalo');
+  document.addEventListener('DOMContentLoaded', function () {
 
 
     //campo datos usuarios
@@ -20,40 +20,47 @@ document.addEventListener('DOMContentLoaded', function(){
     var botonRegistro = document.getElementById('btnRegistro');
     var resultado = document.getElementById('lista-productos');
 
+    //extras
+    var etiquetas = document.getElementById('etiquetas');
+    var camisas = document.getElementById('camisa_evento');
+
     calcular.addEventListener('click', calcularMontos);
-   
 
-    function calcularMontos(event){
-        event.preventDefault();
-       // console.log("Has hecho click en calcular");
-     if(regalo.value === ''){
-         alert('Debes elegir un regalo');
-         regalo.focus();
-     } else {
+
+    function calcularMontos(event) {
+      event.preventDefault();
+      // console.log("Has hecho click en calcular");
+      if (regalo.value === '') {
+        alert('Debes elegir un regalo');
+        regalo.focus();
+      } else {
         var boletosDia = pase_dia.value,
-            boletos2Dias = pase_dosdias.value,
-            boletosCompletos= pase_completo.value;
-          //  console.log("Boletos dias: " + boletosDia );
-   
-          var totalPagar = (boletosDia * 30) + (boletos2Dias * 45) + (boletosCompletos * 50);
+          boletos2Dias = pase_dosdias.value,
+          boletosCompletos = pase_completo.value,
+          cantCamisa = camisas.value,
+          cantEtiquetas = etiquetas.value;
+        //  console.log("Boletos dias: " + boletosDia );
 
-          console.log(totalPagar);
-   
-        } }
+        var totalPagar = (boletosDia * 30) + (boletos2Dias * 45) + (boletosCompletos * 50) + ((cantCamisa * 10) * .93) + (cantEtiquetas * 2);
 
+        console.log(totalPagar);
 
-
-
-//console.log("listo");
+      }
+    }
 
 
 
 
+    //console.log("listo");
 
 
 
 
-}); //DOM CONTENT LOADED
+
+
+
+
+  }); //DOM CONTENT LOADED
 
 
 
