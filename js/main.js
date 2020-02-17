@@ -4,7 +4,17 @@
   var regalo = document.getElementById('regalo');
   document.addEventListener('DOMContentLoaded', function () {
 
+    var map = L.map('mapa').setView([20.674678, -103.38683], 17);
 
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    L.marker([20.674678, -103.38683]).addTo(map)
+        .bindPopup('GDLWEBCAMP 2020 <br> boletos ya disponibles')
+        .openPopup();
+        // .bindTooltip('Un tooltip')
+        // .openTooltip();
     //campo datos usuarios
     var nombre = document.getElementById('nombre');
     var apellido = document.getElementById('apellido');
