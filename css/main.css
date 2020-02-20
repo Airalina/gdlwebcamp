@@ -368,6 +368,7 @@ div.logo img {
 /**navegacionprincipal**/
 nav.navegacion-principal {
   display: none;
+  width: 100%;
 }
 
 nav.navegacion-principal a {

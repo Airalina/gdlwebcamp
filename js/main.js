@@ -33,7 +33,7 @@
     //extras
     var etiquetas = document.getElementById('etiquetas');
     var camisas = document.getElementById('camisa_evento');
-
+    if(document.getElementById('calcular')){
     calcular.addEventListener('click', calcularMontos);
     pase_dia.addEventListener('blur', mostrarDias);
     pase_dosdias.addEventListener('blur', mostrarDias);
@@ -135,7 +135,7 @@
         document.getElementById(diasElegidos[i]).style.display = "block";
       }
     }
-
+  }
     //console.log("listo");
   }); //DOM CONTENT LOADED
 })();
@@ -163,7 +163,10 @@ $(function () {
       });
     }
   });
-
+    //Menu hamburguesa
+    $('.menu-movil').on('click', function(){
+      $('.navegacion-principal').slideToggle();
+    });
 
   //programa de conferencias
   $('.programa-evento .info-curso:first').show();
