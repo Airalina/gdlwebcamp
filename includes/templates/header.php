@@ -59,7 +59,9 @@
   </header>
   <div class="barra">
     <div class="contenedor clearfix">
-      <div class="logo"><img src="img/logo.svg" alt="Logo" /></div>
+      <div class="logo">
+        <a href="index.php"><img src="img/logo.svg" alt="Logo" /></div>
+      </a>
       <!--logo-->
       <div class="menu-movil">
         <span></span>
