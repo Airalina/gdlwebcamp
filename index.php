@@ -119,7 +119,7 @@
 
 
 <?php include_once 'includes/templates/invitados.php'; ?>
-</section>
+
 <!--programa-->
 <div class="contador parallax">
   <div class="contenedor">
@@ -273,3 +273,4 @@
 
 
 <?php include_once 'includes/templates/footer.php'; ?>
+<script src="js/jquery.colorbox.js"></script>

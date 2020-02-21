@@ -4,9 +4,11 @@
   var regalo = document.getElementById('regalo');
   document.addEventListener('DOMContentLoaded', function () {
     
-    if (document.getElementById('mapa')) {
+   
+    if (document.getElementById('mapa')){
  
       var map = L.map('mapa').setView([20.674678, -103.38683], 17);
+   
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -17,9 +19,9 @@
         .openPopup();
       // .bindTooltip('Un tooltip')
       // .openTooltip();
-
-
     }
+    
+    
     
   
     //campo datos usuarios
@@ -148,7 +150,7 @@
     }
   }
     //console.log("listo");
-  }); //DOM CONTENT LOADED
+}); //DOM CONTENT LOADED
 })();
 
 $(function () {
