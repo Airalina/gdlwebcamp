@@ -50,6 +50,8 @@
     apellido.addEventListener('blur', validarCampos);
     email.addEventListener('blur', validarCampos);
     email.addEventListener('blur', validarMail);
+      botonRegistro.disabled = true;
+
 
     function validarCampos() {
       if (this.value == '') {
@@ -110,7 +112,7 @@
         if (cantEtiquetas >= 1) {
           listadoProductos.push(cantEtiquetas + ' Etiquetas');
         }
-          console.log(listadoProductos);
+          
         lista_productos.style.display = "block";
         lista_productos.innerHTML = '';
         for (var i = 0; i < listadoProductos.length; i++) {
@@ -119,6 +121,8 @@
         //  console.log(totalPagar);
 
         suma.innerHTML = "$ " + totalPagar.toFixed(2);
+        botonRegistro.disabled = false;
+        document.getElementById('total_pedido').value = totalPagar;
       }
     }
 

@@ -221,11 +221,11 @@
 
           </div>
           <!--.resumen-->
-          <p>Total</p>
+          <p>Total:</p>
           <div id="suma-total">
-
           </div>
           <!--.suma-total-->
+          <input type="hidden" name="total_pedido" id="total_pedido">
           <input type="submit" id="btnRegistro" name="submit" class="button" value="Pagar">
         </div>
         <!--.total-->
