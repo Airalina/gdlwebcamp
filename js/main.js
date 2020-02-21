@@ -3,18 +3,25 @@
   "use strict";
   var regalo = document.getElementById('regalo');
   document.addEventListener('DOMContentLoaded', function () {
+    
+    if (document.getElementById('mapa')) {
+ 
+      var map = L.map('mapa').setView([20.674678, -103.38683], 17);
 
-    var map = L.map('mapa').setView([20.674678, -103.38683], 17);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+  
+      L.marker([20.674678, -103.38683]).addTo(map)
+        .bindPopup('GDLWEBCAMP 2020 <br> boletos ya disponibles')
+        .openPopup();
+      // .bindTooltip('Un tooltip')
+      // .openTooltip();
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
 
-    L.marker([20.674678, -103.38683]).addTo(map)
-      .bindPopup('GDLWEBCAMP 2020 <br> boletos ya disponibles')
-      .openPopup();
-    // .bindTooltip('Un tooltip')
-    // .openTooltip();
+    }
+    
+  
     //campo datos usuarios
     var nombre = document.getElementById('nombre');
     var apellido = document.getElementById('apellido');
@@ -73,7 +80,7 @@
     function calcularMontos(event) {
       event.preventDefault();
       // console.log("Has hecho click en calcular");
-      if (regalo.value === '') {
+      if (regalo.value === ' ') {
         alert('Debes elegir un regalo');
         regalo.focus();
       } else {
@@ -103,7 +110,7 @@
         if (cantEtiquetas >= 1) {
           listadoProductos.push(cantEtiquetas + ' Etiquetas');
         }
-        //  console.log(listadoProductos);
+          console.log(listadoProductos);
         lista_productos.style.display = "block";
         lista_productos.innerHTML = '';
         for (var i = 0; i < listadoProductos.length; i++) {
@@ -144,6 +151,11 @@ $(function () {
   //lettering
 
   $('.nombre-sitio').lettering();
+  //agregar clase a menu
+  $('body.conferencia .navegacion-principal a:contains("Conferencia")').addClass('activo');
+  $('body.calendario .navegacion-principal a:contains("Calendario")').addClass('activo');
+  $('body.invitados .navegacion-principal a:contains("Invitados")').addClass('activo');
+
   //Menu fijo
   var windowHeight = $(window).height();
   var barraAltura = $('.barra').innerHeight();
@@ -203,5 +215,9 @@ $(function () {
     $('#minutos').html(event.strftime('%M'));
     $('#segundos').html(event.strftime('%S'));
   });
+
+  //colorbox
+
+  $('.invitado-info').colorbox({inline:true, width:"50%"});
 
 });

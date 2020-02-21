@@ -1,7 +1,7 @@
 <?php include_once 'includes/templates/header.php'; ?>
 <section class="seccion contenedor">
   <h2>Registro de usuarios</h2>
-  <form id="registro" class="registro" action="" method="POST">
+  <form id="registro" class="registro" action="validar_registro.php" method="POST">
     <div id="datos_usuarios" class="registro caja clearfix">
       <div class="campo">
         <label for="nombre">Nombre:</label>
@@ -35,7 +35,7 @@
             </ul>
             <div class="orden">
               <label for="pase_dia">Boletos deseados:</label>
-              <input type="number" id="pase_dia" min="0" size="3" placeholder="0">
+              <input type="number" id="pase_dia" min="0" size="3" name="boletos[]" placeholder="0">
             </div>
             <!--orden-->
           </div>
@@ -53,7 +53,7 @@
             </ul>
             <div class="orden">
               <label for="pase_completo">Boletos deseados:</label>
-              <input type="number" id="pase_completo" min="0" size="3" placeholder="0">
+              <input type="number" id="pase_completo" min="0" size="3" name="boletos[]" placeholder="0">
             </div>
             <!--orden-->
           </div>
@@ -71,7 +71,7 @@
             </ul>
             <div class="orden">
               <label for="pase_dosdias">Boletos deseados:</label>
-              <input type="number" id="pase_dosdias" min="0" size="3" placeholder="0">
+              <input type="number" id="pase_dosdias" min="0" size="3" name="boletos[]" placeholder="0">
             </div>
             <!--orden-->
           </div>
@@ -193,22 +193,22 @@
         <div class="extras">
           <div class="orden">
             <label for="camisa_evento">Camisa del evento $10 <small>(promocion 7% dto.)</small></label>
-            <input type="number" min="0" name="camisa_evento" id="camisa_evento" size="3" placeholder="0">
+            <input type="number" min="0" name="pedido_camisas" id="camisa_evento" size="3" placeholder="0">
           </div>
           <!--.orden-->
           <div class="orden">
             <label for="etiquetas">Paquete de 20 etiquetas $2 <small>(HTML5, CSS3, JavaScript,
                 Chrome)</small></label>
-            <input type="number" min="0" name="camisa_evento" id="etiquetas" size="3" placeholder="0">
+            <input type="number" min="0" name="pedido_etiquetas" id="etiquetas" size="3" placeholder="0">
           </div>
           <!--.orden-->
           <div class="orden">
             <label for="regalo">Seleccione un regalo</label><br>
             <select name="regalo" id="regalo" required>
               <option value="">---Seleccione un regalo---</option>
-              <option value="ETI">Etiquetas</option>
-              <option value="PUL">Pulsera</option>
-              <option value="PLU">Pluma</option>
+              <option value="2">Etiquetas</option>
+              <option value="1">Pulsera</option>
+              <option value="3">Pluma</option>
             </select>
           </div>
           <!--.orden-->
@@ -226,7 +226,7 @@
 
           </div>
           <!--.suma-total-->
-          <input type="submit" id="btnRegistro" class="button" value="Pagar">
+          <input type="submit" id="btnRegistro" name="submit" class="button" value="Pagar">
         </div>
         <!--.total-->
       </div>
@@ -239,29 +239,3 @@
 <!--seccion-->
 <?php include_once 'includes/templates/footer.php'; ?>
 
-<script src="js/vendor/modernizr-3.8.0.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script>
-  window.jQuery ||
-    document.write(
-      '<script src="js/vendor/jquery-3.4.1.min.js"><\/script>'
-    );
-</script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
-
-<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-<script>
-  window.ga = function() {
-    ga.q.push(arguments);
-  };
-  ga.q = [];
-  ga.l = +new Date();
-  ga("create", "UA-XXXXX-Y", "auto");
-  ga("set", "transport", "beacon");
-  ga("send", "pageview");
-</script>
-<script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
-</html>

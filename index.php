@@ -23,134 +23,102 @@
   <div class="contenido-programa">
     <div class="contenedor">
       <div class="programa-evento">
-        <h2>Programa del eveto</h2>
+        <h2>Programa del evento</h2>
+        <?php
+
+        try {
+          require_once('includes/funciones/bd_conexion.php');
+          $sql = "SELECT * FROM `categoria_evento`  ";
+
+          $resultado = $conn->query($sql);
+        } catch (\Exception $e) {
+          echo $e->getMessage();
+        }
+
+        ?>
         <nav class="menu-programa">
-          <a href="#talleres"><i class="fa fa-code" aria-hidden="true"></i>Talleres</a>
-          <a href="#conferencias"><i class="fa fa-comment aria-hidden=" true"></i>Conferencias</a>
-          <a href="#seminarios"><i class="fa fa-university" aria-hidden="true"></i>Seminarios</a>
+          <?php
+          while ($cat = $resultado->fetch_array(MYSQLI_ASSOC)) {
+            $categoria = $cat['cat_evento'];
+          ?>
+            <a href="#<?php echo strtolower($categoria)  ?>">
+              <i class="fa <?php echo $cat['icono'];  ?>" aria-hidden="true"></i> <?php echo $categoria; ?></a>
+
+
+          <?php } // var_dump($cat); 
+          ?>
         </nav>
+        <?php
+        try {
+          require_once('includes/funciones/bd_conexion.php');
+          $sql = " SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, icono, nombre_invitado, apellido_invitado ";
+          $sql .= " FROM eventos ";
+          $sql .= " INNER JOIN categoria_evento ";
+          $sql .= " ON eventos.id_cat_evento = categoria_evento.id_categoria ";
+          $sql .= " INNER JOIN invitados ";
+          $sql .= " ON eventos.id_inv = invitados.invitado_id ";
+          $sql .= " AND eventos.id_cat_evento = 1 ";
+          $sql .= " ORDER BY `evento_id` LIMIT 2;";
+          $sql .= " SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, icono, nombre_invitado, apellido_invitado ";
+          $sql .= " FROM eventos ";
+          $sql .= " INNER JOIN categoria_evento ";
+          $sql .= " ON eventos.id_cat_evento = categoria_evento.id_categoria ";
+          $sql .= " INNER JOIN invitados ";
+          $sql .= " ON eventos.id_inv = invitados.invitado_id ";
+          $sql .= " AND eventos.id_cat_evento = 2 ";
+          $sql .= " ORDER BY `evento_id` LIMIT 2;";
+          $sql .= " SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, icono, nombre_invitado, apellido_invitado ";
+          $sql .= " FROM eventos ";
+          $sql .= " INNER JOIN categoria_evento ";
+          $sql .= " ON eventos.id_cat_evento = categoria_evento.id_categoria ";
+          $sql .= " INNER JOIN invitados ";
+          $sql .= " ON eventos.id_inv = invitados.invitado_id ";
+          $sql .= " AND eventos.id_cat_evento = 3 ";
+          $sql .= " ORDER BY `evento_id` LIMIT 2;";
+          } catch (Exception $e) {
+          $error = $e->getMessage();
+        } ?>
+          
+        <?php $conn->multi_query($sql); ?>
+        <?php
+        do {
+          $resultado = $conn->store_result();
+          $row = $resultado->fetch_all(MYSQLI_ASSOC); ?>
 
-        <div id="talleres" class="info-curso ocultar clearfix">
-          <div class="detalle-evento">
-            <h3>HTML5, CSS3 Y JavaScript</h3>
-            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 16:00 hrs</p>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 10 de Dic</p>
-            <p><i class="fa fa-user" aria-hidden="true"></i> Juan Pablo de la torre</p>
-          </div>
-          <!--detalle evento-->
-          <div class="detalle-evento">
-            <h3>Responsive Web Design</h3>
-            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 20:00 hrs</p>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 10 de Dic</p>
-            <p><i class="fa fa-user" aria-hidden="true"></i> Juan Pablo de la torre</p>
-          </div>
-          <!--detalle evento-->
-          <a href="#" class="button float-right">Ver Todos</a>
-        </div>
-        <!--talleres-->
-        <div id="conferencias" class="info-curso ocultar clearfix">
-          <div class="detalle-evento">
-            <h3>Cómo ser freelancer?</h3>
-            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00 hrs</p>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 10 de Dic</p>
-            <p><i class="fa fa-user" aria-hidden="true"></i> Gregorio Sanchez</p>
-          </div>
-          <!--detalle evento-->
-          <div class="detalle-evento">
-            <h3>Tecnologias del futuro</h3>
-            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 17:00 hrs</p>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 10 de Dic</p>
-            <p><i class="fa fa-user" aria-hidden="true"></i> Susan Sanchez</p>
-          </div>
-          <!--detalle evento-->
-          <a href="#" class="button float-right">Ver Todos</a>
-        </div>
-        <!--talleres-->
-        <div id="seminarios" class="info-curso ocultar clearfix">
-          <div class="detalle-evento">
-            <h3>Diseño UI/UX para moviles</h3>
-            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 17:00 hrs</p>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 11 de Dic</p>
-            <p><i class="fa fa-user" aria-hidden="true"></i>Harold Garcia</p>
-          </div>
-          <!--detalle evento-->
-          <div class="detalle-evento">
-            <h3>Aprende a programar en una mañana</h3>
-            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 20:00 hrs</p>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 10 de Dic</p>
-            <p><i class="fa fa-user" aria-hidden="true"></i> Juan Pablo de la torre</p>
-          </div>
-          <!--detalle evento-->
-          <a href="#" class="button float-right">Ver Todos</a>
-        </div>
-        <!--talleres-->
-        <div id="conferencias">
-
-
-        </div>
-        <!--conferencias-->
-
-
-        <div id="seminarios">
-
-
-
-        </div>
-        <!--seminarios-->
+          <?php $i = 0; ?>
+          <?php foreach ($row as $evento) : ?>
+            <?php if ($i % 2 == 0) { ?>
+              <div id="<?php echo strtolower($evento['cat_evento'])  ?>" class="info-curso ocultar clearfix">
+              <?php } ?>
+              <div class="detalle-evento">
+                <!--INICIO CLASE DETALLE EVENTO-->
+                <h3><?php echo html_entity_decode($evento['nombre_evento']) ?></h3>
+                <p><i class="icoevento fa fa-clock" title="Hora"></i> <?php echo $evento['hora_evento'] ?></p>
+                <p><i class="icoevento fa fa-calendar-alt" title="Fecha"></i> <?php echo $evento['fecha_evento'] ?></p>
+                <p><i class="icoevento fa fa-user" title="Autor"></i> <?php echo $evento['nombre_invitado']  ?></p>
+              </div>
+              <?php if ($i % 2 == 1) : ?>
+                <a href="calendario.php" class="button float-right">Ver Todos</a>
+              </div>
+              <!--FIN ID TALLERES-->
+            <?php endif; ?>
+            <?php $i++; ?>
+            <!--INCREMENTAR EL VALOR DE I-->
+          <?php endforeach; ?>
+          <?php $resultado->free(); ?>
+          <!--LA FUNNCION FREE NOS SIRVE PARA LIBERAR LAS CONSULTAS-->
+        <?php } while ($conn->more_results() && $conn->next_result());
+        ?>
       </div>
-      <!--programa-evento-->
     </div>
-    <!--contenedor-->
   </div>
-  <!--contenido-programa-->
-  <section class="invitados contenedor seccion">
-    <h2>Nuestros invitados</h2>
-    <ul class="lista-invitados clearfix">
-      <li>
-        <div class="invitado">
-          <img src="img/invitado1.jpg" alt="Imagen invitado">
-          <p>Rafael Bautista</p>
-        </div>
-        <!--invintado-->
-      </li>
-      <li>
-        <div class="invitado">
-          <img src="img/invitado2.jpg" alt="Imagen invitado">
-          <p>Shari Herrera</p>
-        </div>
-        <!--invintado-->
-      </li>
-      <li>
-        <div class="invitado">
-          <img src="img/invitado3.jpg" alt="Imagen invitado">
-          <p>Gregorio Sanchez</p>
-        </div>
-        <!--invintado-->
-      </li>
-      <li>
-        <div class="invitado">
-          <img src="img/invitado4.jpg" alt="Imagen invitado">
-          <p>Susana Rivera</p>
-        </div>
-        <!--invintado-->
-      </li>
-      <li>
-        <div class="invitado">
-          <img src="img/invitado5.jpg" alt="Imagen invitado">
-          <p>Harold Garcia</p>
-        </div>
-        <!--invintado-->
-      </li>
-      <li>
-        <div class="invitado">
-          <img src="img/invitado6.jpg" alt="Imagen invitado">
-          <p>Susana Sanchez</p>
-        </div>
-        <!--invintado-->
-      </li>
-    </ul>
-  </section>
-  <!--invitados-->
+  <!--FIN CLASE CONTENIDO PROGRAMA-->
+</section>
+<!--FIN SECCION PROGRAMA -->
+
+
+
+<?php include_once 'includes/templates/invitados.php'; ?>
 </section>
 <!--programa-->
 <div class="contador parallax">
@@ -300,35 +268,8 @@
   </div>
   <!--cuenta regresiva-->
 </section>
+
 <!--seccion cuenta regresiva-->
+
+
 <?php include_once 'includes/templates/footer.php'; ?>
-<script src="js/vendor/modernizr-3.8.0.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script>
-  window.jQuery ||
-    document.write(
-      '<script src="js/vendor/jquery-3.4.1.min.js"><\/script>'
-    );
-</script>
-<script src="js/plugins.js"></script>
-<script src="js/jquery.animateNumber.js"></script>
-<script src="js/jquery.countdown.min.js"></script>
-<script src="js/jquery.lettering.js"></script>
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-<script src="js/main.js"></script>
-
-<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-<script>
-  window.ga = function() {
-    ga.q.push(arguments);
-  };
-  ga.q = [];
-  ga.l = +new Date();
-  ga("create", "UA-XXXXX-Y", "auto");
-  ga("set", "transport", "beacon");
-  ga("send", "pageview");
-</script>
-<script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
-</html>

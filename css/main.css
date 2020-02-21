@@ -893,7 +893,7 @@ p.copyright {
 
 /****INTERNAS****/
 /**Conferencia**/
-body.conferencia .navegacion-principal .activo{
+.navegacion-principal .activo{
   border: 2px solid #fe4918;
 }
 div.galeria a {
@@ -1016,7 +1016,7 @@ div.resumen input {
 #lista-productos {
   background-color: #e1e1e1;
   padding: 20px;
-  display: none;
+/*  display: none; */
 }
 
 #suma-total {
@@ -1078,6 +1078,12 @@ div.dia i{
   color: #fe4918;
   font-size: 1.5em;
 }
+/**Color box**/
+div.cboxElement {
+  padding: 30px!important;
+  text-align: center;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
